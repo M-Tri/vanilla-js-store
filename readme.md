@@ -1,0 +1,1 @@
+HTML, CSS, JavaScript, libraries, Jasmine testing framework,  Unit Tests, integration tests, hooks in Jasmine.
