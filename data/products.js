@@ -89,6 +89,31 @@ object3.method();
 */
 
 
+export let products = [];
+
+export function loadProducts(fun){
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+    products = products.filter(product => !removeUnwantedProducts.includes(product.name));
+    console.log('load');
+    fun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
+}
+
+
+
+
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -684,3 +709,7 @@ export const products = [
   }
   return new Product(productDetails);
 });
+*/
+
+//Array of products that I have already removed from the data file. 
+const removeUnwantedProducts = ["Women's Chiffon Beachwear Cover Up - Black", "Men's Slim-Fit Summer Shorts", "Women's Stretch Popover Hoodie", "Women's Fleece Jogger Sweatpant"];
