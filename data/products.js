@@ -105,6 +105,8 @@ export function loadProductsFetch(){
     });
     products = products.filter(product => !removeUnwantedProducts.includes(product.name));
     console.log('load products');
+  }).catch(() => {
+    console.log("Unexpected Error. Please try again later.");
   });
 
   return promise;
@@ -129,6 +131,10 @@ export function loadProducts(fun){
     products = products.filter(product => !removeUnwantedProducts.includes(product.name));
     console.log('load');
     fun();
+  });
+
+  xhr.addEventListener('error', (error) => {
+    console.log("Unexpected Error. Please try again later.");
   });
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
