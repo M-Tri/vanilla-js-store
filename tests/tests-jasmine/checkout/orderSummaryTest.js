@@ -1,6 +1,6 @@
 import {renderOrderSummary}  from "../../../scripts/checkout/orderSummary.js";
 import {loadFromStorage, cart} from "../../../data/cart.js";
-import {loadProducts, loadProductsFetch} from "../../../data/products.js";
+import {loadProductsFetch} from "../../../data/products.js";
 
 
 describe('test suite: renderOrderSummary', () => {
@@ -57,7 +57,6 @@ describe('test suite: renderOrderSummary', () => {
     document.querySelector(`.js-delete-link-${productId1}`).click();
     expect(
       document.querySelectorAll('.js-cart-item-container').length).toEqual(1);
-
     expect(
       document.querySelector(`.js-cart-item-container-${productId1}`)).toEqual(null);
     expect(

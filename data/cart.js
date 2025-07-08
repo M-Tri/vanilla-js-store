@@ -16,7 +16,6 @@ export function loadFromStorage(){
       deliveryOptionId: '2'
     }];
   }
-
 }
 
 function saveToStorage(){
